@@ -1,0 +1,26 @@
+{
+  "name": "fs-person-facts",
+  "version": "0.1.0",
+  "authors": [
+    "Justin York"
+  ],
+  "description": "List a FamilySearch person's facts.",
+  "keywords": [
+    "web-component",
+    "polymer",
+    "FamilySearch"
+  ],
+  "main": "fs-person-facts.html",
+  "license": "MIT",
+  "homepage": "https://github.com/york-solutions/fs-person-facts/",
+  "ignore": [
+    "/.*",
+    "/test/"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#^1.0.0",
+    "fs-client": "york-solutions/fs-client#0.1.9",
+    "paper-item": "PolymerElements/paper-item#~1.0.2",
+    "fs-person-behavior": "york-solutions/fs-person-behavior#~0.1.0"
+  }
+}

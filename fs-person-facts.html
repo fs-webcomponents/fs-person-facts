@@ -1,0 +1,41 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../fs-client/fs-client.html">
+<link rel="import" href="../paper-item/paper-item.html">
+<link rel="import" href="../fs-person-behavior/fs-person-behavior.html">
+
+<!--
+List a FamilySearch person's facts.
+
+Basic example:
+
+    <fs-person-facts person-id="PPP-PPPP"></fs-person-facts>
+
+@group FamilySearch Elements
+@element fs-person-facts
+@demo demo/index.html
+-->
+<dom-module id="fs-person-facts">
+  <template>
+    <style>
+      
+    </style>
+    <fs-client name="{{clientName}}" on-authenticated-changed="_authenticatedChanged"></fs-client>
+    
+  </template>
+</dom-module>
+
+<script>
+
+  Polymer({
+
+    is: 'fs-person-facts',
+
+    behaviors: [FSPersonBehavior],
+    
+    _personChanged: function(){
+      // TODO
+    }
+    
+  });
+
+</script>
