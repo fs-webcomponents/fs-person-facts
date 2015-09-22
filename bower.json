@@ -19,8 +19,13 @@
   ],
   "dependencies": {
     "polymer": "Polymer/polymer#^1.0.0",
-    "fs-client": "york-solutions/fs-client#0.1.9",
     "paper-item": "PolymerElements/paper-item#~1.0.2",
-    "fs-person-behavior": "york-solutions/fs-person-behavior#~0.1.0"
+    "fs-person-cache": "york-solutions/fs-person-cache#0.1.1",
+    "fs-behavior": "york-solutions/fs-behavior#~0.1.4"
+  },
+  "devDependencies": {
+    "fs-signin": "york-solutions/fs-signin#~0.1.6",
+    "paper-styles": "PolymerElements/paper-styles#~1.0.11",
+    "paper-card": "PolymerElements/paper-card#~1.0.5"
   }
 }
