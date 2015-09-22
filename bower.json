@@ -24,6 +24,7 @@
     "fs-behavior": "york-solutions/fs-behavior#~0.1.4"
   },
   "devDependencies": {
+    "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
     "fs-signin": "york-solutions/fs-signin#~0.1.6",
     "paper-styles": "PolymerElements/paper-styles#~1.0.11",
     "paper-card": "PolymerElements/paper-card#~1.0.5"
