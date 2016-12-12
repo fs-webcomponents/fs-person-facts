@@ -1,4 +1,5 @@
 <link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../paper-card/paper-card.html">
 <link rel="import" href="../paper-item/paper-item.html">
 <link rel="import" href="../paper-item/paper-item-body.html">
 <link rel="import" href="../paper-styles/paper-styles.html">
@@ -19,15 +20,17 @@ Basic example:
 <dom-module id="fs-person-facts">
   <template>
     <fs-client name="{{clientName}}" on-authenticated-changed="_authenticatedChanged"></fs-client>
-    <template is="dom-repeat" items="{{facts}}">
-      <paper-item>
-        <paper-item-body three-line>
-          <div>{{item.label}}</div>
-          <div secondary>{{item.date}}</div>
-          <div secondary>{{item.place}}</div>
-        </paper-item-body>
-      </paper-item>
-    </template>
+    <paper-card>
+      <template is="dom-repeat" items="{{facts}}">
+        <paper-item>
+          <paper-item-body three-line>
+            <div>{{item.label}}</div>
+            <div secondary>{{item.date}}</div>
+            <div secondary>{{item.place}}</div>
+          </paper-item-body>
+        </paper-item>
+      </template>
+    </paper-card>
   </template>
 </dom-module>
 

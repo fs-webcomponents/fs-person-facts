@@ -19,14 +19,13 @@
   ],
   "dependencies": {
     "polymer": "Polymer/polymer#^1.0.0",
-    "paper-item": "PolymerElements/paper-item#~1.0.2",
+    "paper-item": "PolymerElements/paper-item#^1.0.2",
     "fs-client": "fs-webcomponents/fs-client#^1.0.0",
-    "fs-person-behavior": "fs-webcomponents/fs-person-behavior#^1.0.0"
+    "fs-person-behavior": "fs-webcomponents/fs-person-behavior#^1.0.0",
+    "paper-card": "PolymerElements/paper-card#^1.1.4"
   },
   "devDependencies": {
     "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
-    "fs-signin": "fs-webcomponents/fs-signin#^1.0.0",
-    "paper-styles": "PolymerElements/paper-styles#^1.0.11",
-    "paper-card": "PolymerElements/paper-card#^1.0.5"
+    "fs-signin": "fs-webcomponents/fs-signin#^1.0.0"
   }
 }
