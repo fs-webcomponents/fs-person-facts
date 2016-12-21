@@ -1,2 +1,5 @@
 # fs-person-facts
-Web component for listing a FamilySearch person's facts
+
+[![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://beta.webcomponents.org/element/fs-webcomponents/fs-person-facts)
+
+Polymer element for listing a FamilySearch person's facts.
