@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+    <title>fs-person-facts Demo</title>
+    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+    <link rel="import" href="../../fs-client/fs-client.html">
+    <link rel="import" href="../../fs-signin/fs-signin.html">
+    <link rel="import" href="../fs-person-facts.html">
+    <link rel="import" href="../../paper-styles/demo-pages.html">
+    <link rel="import" href="../../paper-card/paper-card.html">
+    <style is="custom-style">
+      fs-person-facts {
+        float: left;
+        margin-top: 16px;
+        margin-right: 16px;
+      }
+    </style>
+  </head>
+  <body unresolved>
+
+    <fs-client id="client" app-key="a02j00000099Mc2AAE" redirect-uri="." save-access-token exchange-code redirect-after-sign-in="."></fs-client>
+    <fs-signin></fs-signin>
+    <br>
+    
+    <fs-person-facts person-id="KW7H-D56"></fs-person-facts>
+  
+    <fs-person-facts person-id="KWQM-1XT"></fs-person-facts>
+
+  </body>
+</html>

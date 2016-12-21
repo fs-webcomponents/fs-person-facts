@@ -1,0 +1,89 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../paper-card/paper-card.html">
+<link rel="import" href="../paper-item/paper-item.html">
+<link rel="import" href="../paper-item/paper-item-body.html">
+<link rel="import" href="../paper-styles/paper-styles.html">
+<link rel="import" href="../fs-client/fs-client.html">
+<link rel="import" href="../fs-person-behavior/fs-person-behavior.html">
+
+<!--
+List a FamilySearch person's facts.
+
+Basic example:
+
+    <fs-person-facts person-id="PPP-PPPP"></fs-person-facts>
+
+@group FamilySearch Elements
+@element fs-person-facts
+@demo demo/index.html
+-->
+<dom-module id="fs-person-facts">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+      
+      paper-card {
+        width: 100%;
+      }
+    </style>
+    <fs-client name="{{clientName}}" on-authenticated-changed="_authenticatedChanged"></fs-client>
+    <paper-card>
+      <template is="dom-repeat" items="{{facts}}">
+        <paper-item>
+          <paper-item-body three-line>
+            <div>{{item.label}}</div>
+            <div secondary>{{item.date}}</div>
+            <div secondary>{{item.place}}</div>
+          </paper-item-body>
+        </paper-item>
+      </template>
+    </paper-card>
+  </template>
+</dom-module>
+
+<script>
+
+  Polymer({
+
+    is: 'fs-person-facts',
+    
+    properties: {
+      
+      facts: {
+        type: Array,
+        value: function(){
+          return [];
+        }
+      }
+      
+    },
+
+    behaviors: [FSPersonBehavior],
+    
+    _personChanged: function(){
+      var label;
+      if(this.person && this.person.facts){
+        this.facts = this.person.facts.map(function(fact){
+          label = fact.type.replace('http://gedcomx.org/', '');
+          
+          // Handle custom facts
+          if(label.indexOf('data:,') === 0){
+            label = decodeURIComponent(label.replace('data:,',''));
+          }
+          
+          return {
+            label: label,
+            date: fact.date ? fact.date.original : '',
+            place: fact.place ? fact.place.original : ''
+          };
+        });
+      } else {
+        this.facts = [];
+      }
+    }
+    
+  });
+
+</script>

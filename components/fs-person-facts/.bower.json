@@ -1,0 +1,40 @@
+{
+  "name": "fs-person-facts",
+  "authors": [
+    "Justin York"
+  ],
+  "description": "List a FamilySearch person's facts.",
+  "keywords": [
+    "web-component",
+    "polymer",
+    "FamilySearch"
+  ],
+  "main": "fs-person-facts.html",
+  "license": "MIT",
+  "homepage": "https://github.com/fs-webcomponents/fs-person-facts/",
+  "ignore": [
+    "/.*",
+    "/test/"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#^1.0.0",
+    "paper-item": "PolymerElements/paper-item#^1.0.2",
+    "fs-client": "fs-webcomponents/fs-client#^2.0.0",
+    "fs-person-behavior": "fs-webcomponents/fs-person-behavior#^2.0.0",
+    "paper-card": "PolymerElements/paper-card#^1.1.4"
+  },
+  "devDependencies": {
+    "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
+    "fs-signin": "fs-webcomponents/fs-signin#^2.0.0"
+  },
+  "_release": "8f059f6df1",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "8f059f6df1370e2bb8186fbc024c8b38460ac0b4"
+  },
+  "_source": "git://github.com/fs-webcomponents/fs-person-facts.git",
+  "_target": "master",
+  "_originalSource": "fs-webcomponents/fs-person-facts",
+  "_direct": true
+}
