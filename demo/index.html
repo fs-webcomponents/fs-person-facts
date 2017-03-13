@@ -10,15 +10,17 @@
     <link rel="import" href="../fs-person-facts.html">
     <link rel="import" href="../../paper-styles/demo-pages.html">
     <link rel="import" href="../../paper-card/paper-card.html">
-    <style is="custom-style">
-      fs-person-facts {
-        float: left;
-        margin-top: 16px;
-        margin-right: 16px;
-      }
-    </style>
   </head>
   <body unresolved>
+    <custom-style>
+      <style is="custom-style">
+        fs-person-facts {
+          float: left;
+          margin-top: 16px;
+          margin-right: 16px;
+        }
+      </style>
+    </custom-style>
 
     <fs-client id="client" app-key="a02j00000099Mc2AAE" redirect-uri="." save-access-token exchange-code redirect-after-sign-in="."></fs-client>
     <fs-signin></fs-signin>
