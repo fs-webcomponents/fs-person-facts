@@ -18,14 +18,14 @@
     "/test/"
   ],
   "dependencies": {
-    "polymer": "Polymer/polymer#^1.0.0",
-    "paper-item": "PolymerElements/paper-item#^1.0.2",
-    "fs-client": "fs-webcomponents/fs-client#^2.0.0",
-    "fs-person-behavior": "fs-webcomponents/fs-person-behavior#^2.0.0",
-    "paper-card": "PolymerElements/paper-card#^1.1.4"
+    "polymer": "Polymer/polymer#^2.0.0",
+    "paper-item": "PolymerElements/paper-item#^2.0.0",
+    "fs-client": "fs-webcomponents/fs-client#^3.0.0",
+    "fs-person-behavior": "fs-webcomponents/fs-person-behavior#^3.0.0",
+    "paper-card": "PolymerElements/paper-card#^2.0.0"
   },
   "devDependencies": {
-    "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
-    "fs-signin": "fs-webcomponents/fs-signin#^2.0.0"
+    "iron-component-page": "PolymerElements/iron-component-page#^3.0.0",
+    "fs-signin": "fs-webcomponents/fs-signin#^3.0.0"
   }
 }
