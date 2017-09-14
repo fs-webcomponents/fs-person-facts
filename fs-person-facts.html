@@ -1,10 +1,9 @@
-<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../polymer/polymer-element.html">
 <link rel="import" href="../paper-card/paper-card.html">
 <link rel="import" href="../paper-item/paper-item.html">
 <link rel="import" href="../paper-item/paper-item-body.html">
 <link rel="import" href="../paper-styles/paper-styles.html">
-<link rel="import" href="../fs-client/fs-client.html">
-<link rel="import" href="../fs-person-behavior/fs-person-behavior.html">
+<link rel="import" href="../fs-person-mixin/fs-person-mixin.html">
 
 <!--
 List a FamilySearch person's facts.
@@ -14,7 +13,8 @@ Basic example:
     <fs-person-facts person-id="PPP-PPPP"></fs-person-facts>
 
 @group FamilySearch Elements
-@element fs-person-facts
+@customElement
+@polymer
 @demo demo/index.html
 -->
 <dom-module id="fs-person-facts">
@@ -28,7 +28,6 @@ Basic example:
         width: 100%;
       }
     </style>
-    <fs-client name="{{clientName}}" on-authenticated-changed="_authenticatedChanged"></fs-client>
     <paper-card>
       <template is="dom-repeat" items="{{facts}}">
         <paper-item>
@@ -41,49 +40,44 @@ Basic example:
       </template>
     </paper-card>
   </template>
-</dom-module>
-
-<script>
-
-  Polymer({
-
-    is: 'fs-person-facts',
-    
-    properties: {
+  <script>
+    class FSPersonFacts extends FSPersonMixin(Polymer.Element) {
+      static get is() { return 'fs-person-facts'; }
       
-      facts: {
-        type: Array,
-        value: function(){
-          return [];
-        }
-      }
-      
-    },
-
-    behaviors: [FSPersonBehavior],
-    
-    _personChanged: function(){
-      var label;
-      if(this.person && this.person.facts){
-        this.facts = this.person.facts.map(function(fact){
-          label = fact.type.replace('http://gedcomx.org/', '');
-          
-          // Handle custom facts
-          if(label.indexOf('data:,') === 0){
-            label = decodeURIComponent(label.replace('data:,',''));
+      static get properties() {
+        return {
+          facts: {
+            type: Array,
+            value: function(){
+              return [];
+            }
           }
-          
-          return {
-            label: label,
-            date: fact.date ? fact.date.original : '',
-            place: fact.place ? fact.place.original : ''
-          };
-        });
-      } else {
-        this.facts = [];
+        };
+      }
+  
+      _personChanged() {
+        var label;
+        if(this.person && this.person.facts){
+          this.facts = this.person.facts.map(function(fact){
+            label = fact.type.replace('http://gedcomx.org/', '');
+            
+            // Handle custom facts
+            if(label.indexOf('data:,') === 0){
+              label = decodeURIComponent(label.replace('data:,',''));
+            }
+            
+            return {
+              label: label,
+              date: fact.date ? fact.date.original : '',
+              place: fact.place ? fact.place.original : ''
+            };
+          });
+        } else {
+          this.facts = [];
+        }
       }
     }
     
-  });
-
-</script>
+    customElements.define(FSPersonFacts.is, FSPersonFacts);
+  </script>
+</dom-module>
