@@ -1,8 +1,10 @@
 <link rel="import" href="../polymer/polymer-element.html">
 <link rel="import" href="../paper-card/paper-card.html">
+<link rel="import" href="../paper-button/paper-button.html">
 <link rel="import" href="../paper-styles/paper-styles.html">
 <link rel="import" href="../fs-person-mixin/fs-person-mixin.html">
 <link rel="import" href="../fs-fact/fs-fact.html">
+<link rel="import" href="../fs-fact/fs-fact-types-menu.html">
 
 <!--
 List a FamilySearch person's facts.
@@ -34,13 +36,27 @@ Basic example:
       .fact-container:not(:first-child) {
         border-top: 1px solid #e0e0e0;
       }
+      
+      [hidden] {
+        display: none !important;
+      }
     </style>
     <paper-card>
       <template is="dom-repeat" items="{{facts}}">
         <div class="fact-container">
-          <fs-fact fact="{{item}}"></fs-fact>
+          <fs-fact editable fact="{{item}}" save-url="[[_saveUrl]]"></fs-fact>
         </div>
       </template>
+      <div class="fact-container">
+        <paper-button 
+          hidden$="[[_selectingNewFactType]]" 
+          on-tap="_addNewFact">Add Fact</paper-button>
+        <fs-fact-types-menu 
+          hidden$="[[!_selectingNewFactType]]"
+          entity-type="person"
+          ignore-vitals="[[ignoreVitals]]"
+          value="{{_newFactType}}"></fs-fact-types-menu>
+      </div>
     </paper-card>
   </template>
   <script>
@@ -63,15 +79,57 @@ Basic example:
           ignoreVitals: {
             type: Boolean,
             value: false
-          }
+          },
+          
+          /**
+           * Whether the user has indicated they want to add a new fact type
+           * and are still in the fact type selection process.
+           */
+          _selectingNewFactType: {
+            type: Boolean,
+            value: false
+          },
+          
+          /**
+           * Fact type the user has chosen for a new fact
+           */
+          _newFactType: {
+            type: String,
+            observer: '_newFactTypeChosen'
+          },
+          
+          /**
+           * URL that facts will be saved to
+           */
+          _saveUrl: String
         };
       }
   
       _personChanged() {
         if(this.person && this.person.facts){
+          this._saveUrl = this.person.links.person.href;
           this.facts = this.ignoreVitals ? this.person.facts.filter(f => !FsFactTypes.isVital(f.type)) : this.person.facts;
         } else {
           this.facts = [];
+        }
+      }
+      
+      _addNewFact() {
+        this._selectingNewFactType = true;
+      }
+      
+      _newFactTypeChosen(newFactType) {
+        if(newFactType) {
+          this._newFactType = '';
+          this._selectingNewFactType = false;
+          this.push('facts', {
+            type: newFactType
+          });
+          
+          // Put the new fact into edit mode
+          setTimeout(() => {
+            Array.from(this.shadowRoot.querySelectorAll('fs-fact')).pop().edit = true;
+          });
         }
       }
     }
