@@ -1,6 +1,6 @@
 {
   "name": "fs-person-facts",
-  "version": "4.1.0",
+  "version": "4.1.1",
   "description": "List a FamilySearch person's facts.",
   "keywords": [
     "web-component",
@@ -18,7 +18,7 @@
     "polymer": "Polymer/polymer#^2.0.0",
     "fs-person-mixin": "fs-webcomponents/fs-person-mixin#^4.0.0",
     "paper-card": "PolymerElements/paper-card#^2.0.0",
-    "fs-fact": "fs-webcomponents/fs-fact#^4.1.0",
+    "fs-fact": "fs-webcomponents/fs-fact#^4.2.0",
     "paper-button": "PolymerElements/paper-button#^2.0.0"
   },
   "devDependencies": {
