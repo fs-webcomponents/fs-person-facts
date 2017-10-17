@@ -1,9 +1,8 @@
 <link rel="import" href="../polymer/polymer-element.html">
 <link rel="import" href="../paper-card/paper-card.html">
-<link rel="import" href="../paper-item/paper-item.html">
-<link rel="import" href="../paper-item/paper-item-body.html">
 <link rel="import" href="../paper-styles/paper-styles.html">
 <link rel="import" href="../fs-person-mixin/fs-person-mixin.html">
+<link rel="import" href="../fs-fact/fs-fact.html">
 
 <!--
 List a FamilySearch person's facts.
@@ -27,16 +26,20 @@ Basic example:
       paper-card {
         width: 100%;
       }
+      
+      .fact-container {
+        padding: 16px;
+      }
+      
+      .fact-container:not(:first-child) {
+        border-top: 1px solid #e0e0e0;
+      }
     </style>
     <paper-card>
       <template is="dom-repeat" items="{{facts}}">
-        <paper-item>
-          <paper-item-body three-line>
-            <div>{{item.label}}</div>
-            <div secondary>{{item.date}}</div>
-            <div secondary>{{item.place}}</div>
-          </paper-item-body>
-        </paper-item>
+        <div class="fact-container">
+          <fs-fact fact="{{item}}"></fs-fact>
+        </div>
       </template>
     </paper-card>
   </template>
@@ -58,20 +61,7 @@ Basic example:
       _personChanged() {
         var label;
         if(this.person && this.person.facts){
-          this.facts = this.person.facts.map(function(fact){
-            label = fact.type.replace('http://gedcomx.org/', '');
-            
-            // Handle custom facts
-            if(label.indexOf('data:,') === 0){
-              label = decodeURIComponent(label.replace('data:,',''));
-            }
-            
-            return {
-              label: label,
-              date: fact.date ? fact.date.original : '',
-              place: fact.place ? fact.place.original : ''
-            };
-          });
+          this.facts = this.person.facts;
         } else {
           this.facts = [];
         }

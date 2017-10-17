@@ -16,9 +16,9 @@
   ],
   "dependencies": {
     "polymer": "Polymer/polymer#^2.0.0",
-    "paper-item": "PolymerElements/paper-item#^2.0.0",
     "fs-person-mixin": "fs-webcomponents/fs-person-mixin#^4.0.0",
-    "paper-card": "PolymerElements/paper-card#^2.0.0"
+    "paper-card": "PolymerElements/paper-card#^2.0.0",
+    "fs-fact": "fs-webcomponents/fs-fact#^4.0.0"
   },
   "devDependencies": {
     "fs-signin": "fs-webcomponents/fs-signin#^4.0.0"
