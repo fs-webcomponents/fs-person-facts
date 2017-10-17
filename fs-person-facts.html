@@ -54,14 +54,22 @@ Basic example:
             value: function(){
               return [];
             }
+          },
+          
+          /**
+           * Whether to ignore (hide) vital facts. This is useful when
+           * you are also using the fs-person-vitals component.
+           */
+          ignoreVitals: {
+            type: Boolean,
+            value: false
           }
         };
       }
   
       _personChanged() {
-        var label;
         if(this.person && this.person.facts){
-          this.facts = this.person.facts;
+          this.facts = this.ignoreVitals ? this.person.facts.filter(f => !FsFactTypes.isVital(f.type)) : this.person.facts;
         } else {
           this.facts = [];
         }
